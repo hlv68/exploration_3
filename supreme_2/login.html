@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<meta name="keywords" content="Flat Dark Web Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<!--webfonts-->
+<!-- <link href='http://fonts.useso.com/css?family=PT+Sans:400,700,400italic,700italic|Oswald:400,300,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
+<!-- <script src="http://ajax.useso.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
+<script type="text/javascript" src="js/jquery.min.js" ></script>
+<style>
+	#register{
+		margin-bottom: 10px;
+	    display: block;
+	    text-align: right;
+	    margin-right: 10px;
+	    color: #ddd;
+	}
+</style>
+</head>
+<body>
+<script>$(document).ready(function(c) {
+    $('.close').on('click', function(c){
+    $('.login-form').fadeOut('slow', function(c){
+        $('.login-form').remove();
+		});
+	});	  
+});
+</script>
+<div class="login-form">
+	<div class="close"> </div>
+		<div class="head-info">
+			<label class="lbl-1"> </label>
+			<label class="lbl-2"> </label>
+			<label class="lbl-3"> </label>
+		</div>
+			<div class="clear"> </div>
+			
+			
+	<div class="avtar">
+		<img src="images/avtar.png" />
+	</div>
+			<form id="form1" name="form1" method="post" action="login.php">
+				<input type="text" class="text" name="Username" value="Username" id="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
+				<div class="key">
+					<input type="password" name="Pw" value="Password" id="pw" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+				<a id="register" href="register.html">register >></a>
+				</div>
+				
+			</form>
+	<div class="signin">
+		<input type="submit" value="Login" onclick="new_page()">
+	</div>
+	<script>
+	function new_page(){
+		var _username = document.form1.name.value,
+			_password = document.form1.pw.value;
+		
+		$.post("info.php",{
+			username : _username,
+			pass : _password,
+			type : 'login'
+		},function(res){
+			if(res.status == 0){
+				alert(res.message);return;
+			}else{
+				setCookie('username',_username);
+				alert(res.message);
+			    window.location="index.html";
+			}
+		},'json')
+	}
+	
+	function setCookie(cname,cvalue,exdays){
+	  var d = new Date();
+	  d.setTime(d.getTime()+(exdays*24*60*60*1000));
+	  var expires = "expires="+d.toGMTString();
+	  document.cookie = cname + "=" + cvalue + "; " + expires;
+	}
+</script>
+</div>
+</body>
+</html>

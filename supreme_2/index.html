@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+ <html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        
+        
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script type="text/javascript">
+            //Read cookie
+            var _username = getCookie('username');
+            if(_username.length < 1){
+                alert("Please login first!");
+                window.location.href = './login.html';
+            }
+
+            function getCookie(cname){
+              var name = cname + "=";
+              var ca = document.cookie.split(';');
+              for(var i=0; i<ca.length; i++) 
+              {
+                var c = ca[i].trim();
+                if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+              }
+              return "";
+            }
+
+            function setCookie(cname,cvalue,exdays){
+              var d = new Date();
+              d.setTime(d.getTime()+(exdays*24*60*60*1000));
+              var expires = "expires="+d.toGMTString();
+              document.cookie = cname + "=" + cvalue + "; " + expires;
+            }
+
+            function logout(){
+                var msg = "Are you sure?"; 
+                if (confirm(msg)==true){ 
+                    setCookie('username','');
+                    window.location.href = './login.html';
+                }else{ 
+                  return; 
+                } 
+            }
+
+        </script> 
+    </head>
+    <body>
+        <div id="main-wrapper">
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center templatemo-logo margin-top-20">
+                <!--<h1 class="site-title">
+                    <a href="#">SUPREME</a>
+                </h1>-->
+                <h2>
+                <img src="images/supreme_wallpaper.jpg" width="150" height="50">
+                </h2>
+                <h3 class="site-title">
+                	Welcome <a href="#"><span class="blue">Guest!</span></a>
+                </h3>
+                <div>
+                    <a>
+                    <div>
+                        <h2><a href="javascript:void(0)" onclick="logout()">Logout</a></h2>
+                    </div>
+                    </a>
+                    <div>
+                    <button type="button" onclick="loadDoc()">Click me!</button>
+
+                    <div id="contentBox"></div>
+
+                    <script>
+                        function loadDoc() {
+                            document.getElementById("contentBox").innerHTML = "Loading...";
+                            var xmlHttp = new XMLHttpRequest();
+                            xmlHttp.onload = function() {
+			                if (xmlHttp.status == 200) {
+				            elemObj = document.getElementById('contentBox');
+				            elemObj.innerHTML = xmlHttp.responseText;
+			                 }
+		                  }
+		
+		              xmlHttp.open("GET", "info.php", true);
+		              xmlHttp.send();
+
+                    }
+                    </script>
+                </div>
+                </div>
+            </div>
+
+            <div class="image-section">
+                <div class="image-container">
+                    <img src="images/zoom-bg-1.jpg" id="menu-img" class="main-img inactive" alt="Zoom">
+                    <img src="images/zoom-bg-2.jpg" id="products-img" class="inactive" alt="Product">
+                    <img src="images/zoom-bg-3.jpg" id="stores-img"  class="inactive" alt="Stores">
+                    <img src="images/zoom-bg-4.jpg" id="news-img" class="inactive" alt="News">
+                    <img src="images/zoom-bg-5.jpg" id="contact-img" class="inactive" alt="Contact">
+                    <img src="images/zoom-bg-6.jpg" id="company-intro-img" class="main-img inactive" alt="Company Intro">
+                    <img src="images/zoom-bg-7.jpg" id="video-img" class="main-img inactive" alt="Video">
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2 content-wrapper">
+                    <div class="content">
+                        
+                        <section id="menu-section" class="active">    
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 margin-bottom-20">
+                                    <a href="#products" class="change-section">
+                                        <div class="black-bg btn-menu">
+                                            <i class="fa fa-cubes"></i>
+                                            <h2>Products</h2>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 margin-bottom-20">
+                                    <a href="#stores" class="change-section">
+                                        <div class="black-bg btn-menu">
+                                            <i class="fa fa-laptop"></i>
+                                            <h2>Stores</h2>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 margin-bottom-20">
+                                    <a href="#news" class="change-section">
+                                        <div class="black-bg btn-menu">
+                                            <i class="fa fa-users"></i>
+                                            <h2>News</h2>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 margin-bottom-20">
+                                    <a href="#contact" class="change-section">
+                                        <div class="black-bg btn-menu">
+                                            <i class="fa fa-envelope"></i>
+                                            <h2>Contact</h2>
+                                        </div>
+                                    </a>
+                                </div>
+                            
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 margin-bottom-20">
+                                    <a href="#company-intro" class="change-section">
+                                        <div class="black-bg btn-menu">
+                                            <h2>Introduction to Company</h2>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 margin-bottom-20">
+                                    <a href="#video" class="change-section">
+                                        <div class="black-bg btn-menu">
+                                            <h2>Video</h2>
+                                        </div>
+                                    </a>
+                                </div>
+                                </div>
+                        </section><!--menu-section-->    
+                        <section id="products-section" class="inactive">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6 col-lg-6 margin-bottom-20">
+                                    <div class="black-bg col-sm-12 col-md-12 col-lg-12">
+                                        <h2>Street Wear</h2>
+                                        <p>Supreme has a line of collaborations with brands such as Nike, Air Jordan, Vans, Clarks, The North Face., Hanes, Playboy, Levi's, Timberland, Comme des Garçons, UNDERCOVER, White Castle as well as many more. Fashion photographer Terry Richardson has produced some of the most notable pieces which include photographs of Michael Jordan, Kermit the Frog, Three Six Mafia, Lou Reed, Lady Gaga, and Neil Young.</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="black-bg col-sm-100 col-md-120 col-lg-120">
+                                        <h2>SkateBoard</h2>
+                                        <img src="images/supreme-affiliates.jpg" width="300" height="320">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row margin-top-20">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6  pull-right">
+                                    <a href="#menu" class="change-section">
+                                        <div class="black-bg btn-menu">
+                                            <h2>
+                                            <a href="index.html?action=back">Back to the menu</a>
+                                            </h2>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </section><!--product-section-->    
+                        <section id="stores-section" class="inactive">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 black-bg">
+                                        <h2>STORE LOCATION</h2>
+                                        <p>United States:</p>
+                                        
+                                        <p>New York City: 274 Lafayette Street, NYC 10012</p>
+                                        
+                                        <p>Los Angeles: 439 North Fairfax Ave, LA 90036</p>
+                                        <p>Open 11:00 - 7(Mon-Thu)</p>
+                                        
+                                        <p>11-7:30(Fri-SAT)</p>
+                                        
+                                        <p>12-6(SUN)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row margin-top-20">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6  pull-right">
+                                    <a href="#menu" class="change-section">
+                                        <div class="black-bg btn-menu">
+                                            <h2><a href="index.html?action=back">Back to the menu</a></h2>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </section><!--Stores-section-->    
+                        <section id="news-section" class="inactive">
+                            <div class="row">
+                                <div class="black-bg col-sm-12 col-md-12 col-lg-12">
+                                    <h2 class="text-center">News</h2>
+                                    <div class="col-sm-6 col-md-6">
+                                        <p><a href="http://www.supremenewyork.com">www.supremenewyork.com</a> will be releasing a web exclusive collection. The capsule will release on December 5th at 11am EST. The collection is influence by SUPREME STORE® NY and features the 1st Camo Pattern.</p>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <p>Supreme® is happy to present the 2015 Christmas Collection which will hit stores on Saturday, Dec 5th! Inspired by the cosmos, the Space Camo series feature a glow in the dark galaxy print on t-shirts and hoodies.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row margin-top-20">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6  pull-right">
+                                    <a href="#menu" class="change-section">
+                                        <div class="black-bg btn-menu">
+                                            <h2><a href="index.html?action=back">Back to the menu</a></h2>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </section><!-- /.about-section -->    
+                        <section id="contact-section" class="inactive">
+                            <div class="row">
+                                <div class="black-bg col-sm-12 col-md-12 col-lg-12">
+                                    <h2 class="text-center">Contact</h2>
+                                    
+                                    <div class="col-sm-12 col-md-12">
+                                        <p>Please chack Supreme officila website <a href="http://www.supremenewyork.com/"><span class="blue">http://www.supremenewyork.com/ </span></a>for more info, or Send messege to us.</p>
+                                    </div>
+                                    
+                                    <div class="col-sm-6 col-md-6">
+                                        <div id="map-canvas"></div>
+                                        <p>274 Lafayette Street NYC 10012</p>
+                                        <p>Tel 212-966-7799</p>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-6 margin-bottom-20">
+                                        <form action="#" method="post">
+
+                                                <div class="form-group">
+                                                    <!--<label for="contact_name">Name</label>-->
+                                                    <input type="text" id="contact_name" class="form-control" placeholder="Name" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <!--<label for="contact_email">Email Address</label>-->
+                                                    <input type="text" id="contact_email" class="form-control" placeholder="Email Address" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <!--<label for="contact_message">Message</label>-->
+                                                    <textarea id="contact_message" class="form-control" rows="7" placeholder="Write a message"></textarea>
+                                                </div>
+                                                <button type="button" id="EmailSend" class="btn btn-primary">Send</button>
+
+                                        </form>
+                                    </div>
+                                    
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="row margin-top-20">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6  pull-right">
+                                    <a href="#menu" class="change-section">
+                                        <div class="black-bg btn-menu">
+                                            <h2><a href="index.html?action=back">Back to the menu</a></h2>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </section><!--contact-section-->    
+                        <section id="company-intro-section" class="inactive">
+                            <div class="row">
+                                <div class="black-bg col-sm-12 col-md-12 col-lg-12">
+                                    <h2 class="text-center">Company Intro</h2>
+                                    <div class="col-sm-12 col-md-12">
+                                        <p>Supreme is a skateboarding shop/clothing brand in New York City established in April 1994.</p>
+                                        <p>The brand was originally founded by James Jebbia. Although he was born in the US, he lived in England from the age of one to nineteen.The first Supreme store opened on Lafayette Street in downtown Manhattan in 1994. It was designed with skaters in mind, unusually with the clothes arranged around the outside of the store with a large space in the middle. This meant that skaters with backpacks on could skate right into the store, and still feel comfortable. In 2004, a store was opened on North Fairfax Ave in Los Angeles, California, which is almost double the size of the original New York store and also includes an indoor skate bowl. There are other stores in London, Tokyo (Harajuku, Daikanyama & Shibuya), Nagoya, Osaka, and Fukuoka. These modern stores still try to emulate the original Lafayette Street store design. </p>
+                                        <p>Unlike other clothing brands, who release their new collections all at once, Supreme releases a small number of items at a time, typically five to fifteen. This "drop" occurs online at 11 am local time in America, UK and Japan. This strategy maintains the aura of "hype" that the brand creates. Their shoes, clothing, and accessories create a big secondary market for supreme clothing, because items are produced to a very limited quantity and also because there are only nine stores worldwide. Supreme has a line of collaborations with brands such as Nike, Air Jordan, Vans, Clarks, The North Face., Hanes, Playboy, Levi's, Timberland, Comme des Garçons, UNDERCOVER, White Castle as well as many more. Fashion photographer Terry Richardson has produced some of the most notable pieces which include photographs of Michael Jordan, Kermit the Frog, Three Six Mafia, Lou Reed, Lady Gaga, and Neil Young.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row margin-top-20">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6  pull-right">
+                                    <a href="#menu" class="change-section">
+                                        <div class="black-bg btn-menu">
+                                            <h2><a href="index.html?action=back">Back to the menu</a></h2>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </section>    
+                        <section id="video-section" class="inactive">
+                            <div class="row">
+                                <div class="black-bg col-sm-12 col-md-12 col-lg-12">
+                                    
+                                    <h2 class="text-center">Specials</h2>
+                                    <div class="col-sm-12 col-md-12">
+                                        <!--<p><a href="http://www.supremenewyork.com/shop/jackets/supreme-playboy-leather-puffy-jacket">Supreme/PlayBoy Leather Puff Jacket</p>
+                                        <img src="images/uPS6d9Nd5Lo.jpg" width="350" height="320">
+                                        <p><a href="http://www.supremenewyork.com/shop/jackets/supreme-schott-peacoat">Supreme/Schott Peacoat</p>
+                                        <img src="images/TD-m1_c5M9Y.jpg" width="350" height="320">
+                                        <p><a href="http://www.supremenewyork.com/shop/accessories/supreme-victorinox-money-clip"></a>Supreme/Victorinox Money Clip</p>
+                                        <img src="images/jiVyEFBm04I.jpg" width="350" height="300">-->
+                                        <h2 class="text-center">This Is What Happens When Supreme Releases Its Iconic Box Logo Tee</h2>
+                                        <!-- <iframe width="565" height="360" src="https://www.youtube.com/embed/S1L3BFMpCkI" frameborder="0" allowfullscreen></iframe> -->
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row margin-top-20">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6  pull-right">
+                                    <a href="#menu" class="change-section">
+                                        <div class="black-bg btn-menu">
+                                            <h2><a href="index.html?action=back">Back to the menu</a></h2>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </section>   
+                    </div> 
+                </div> 
+        </div>
+
+            
+
+		</div><!-- /#main-wrapper -->
+        
+        <div id="preloader">
+            <div id="status">&nbsp;</div>
+        </div><!-- /#preloader -->
+        
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/jquery.backstretch.min.js"></script>
+        <script src="js/script.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                $(document).on('click','#EmailSend',function(){
+                    var _this = $(this);
+                    _this.attr('disabled',true);
+
+                    var _name = $("#contact_name").val(),
+                        _message = $("#contact_message").val(),
+                        _email = $("#contact_email").val();
+                    if(_name.length < 1 || _message.length < 1 || _email.length < 1){
+                        _this.attr('disabled',false);
+                        alert("Incomplete information!!");return;
+                    }
+
+                   var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+                   if(!reg.test(_email)){
+                        _this.attr('disabled',false);
+                        alert("The mail format is incorrect!");return;
+                   }
+
+                   $.post("./sendmail.php",{
+                        name : _name,
+                        message : _message,
+                        email :_email
+                   },function(res){
+                        _this.attr('disabled',false);
+                        alert(JSON.stringify(res));
+                   },'json')
+                })
+            })
+        </script>
+    </body> 
+</html>
